@@ -42,4 +42,46 @@ public class TestLambdas {
 
     }
 
+    /**
+     * Test 'lambda' way of implementing method of anonymous class.
+     * The long format.
+     */
+    @Test
+    public void testImplementValidateCarWithLambda1() {
+        CarUtilities carUtilities = new CarUtilities();
+        List<Car> filteredCars = carUtilities.filterCars(cars, (Car car) -> { return "BMW".equals(car.getBrand()); });
+
+        Assert.assertEquals(1, filteredCars.size());
+        Assert.assertSame("BMW", filteredCars.get(0).getBrand());
+
+    }
+
+    /**
+     * Test 'lambda' way of implementing method of anonymous class.
+     * A shorter format.
+     */
+    @Test
+    public void testImplementValidateCarWithLambda2() {
+        CarUtilities carUtilities = new CarUtilities();
+        List<Car> filteredCars = carUtilities.filterCars(cars, car -> { return "BMW".equals(car.getBrand()); });
+
+        Assert.assertEquals(1, filteredCars.size());
+        Assert.assertSame("BMW", filteredCars.get(0).getBrand());
+
+    }
+
+    /**
+     * Test 'lambda' way of implementing method of anonymous class.
+     * The shortest format.
+     */
+    @Test
+    public void testImplementValidateCarWithLambda3() {
+        CarUtilities carUtilities = new CarUtilities();
+        List<Car> filteredCars = carUtilities.filterCars(cars, car -> "BMW".equals(car.getBrand()));
+
+        Assert.assertEquals(1, filteredCars.size());
+        Assert.assertSame("BMW", filteredCars.get(0).getBrand());
+
+    }
+
 }
