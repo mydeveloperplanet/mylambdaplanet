@@ -84,4 +84,18 @@ public class TestLambdas {
 
     }
 
+    /**
+     * Test 'lambda' way of implementing method of anonymous class.
+     * The shortest format.
+     */
+    @Test
+    public void testImplementValidateCarWithLambdaAndPredicate() {
+        CarUtilities carUtilities = new CarUtilities();
+        List<Car> filteredCars = carUtilities.filterCarsWithPredicate(cars, car -> "BMW".equals(car.getBrand()));
+
+        Assert.assertEquals(1, filteredCars.size());
+        Assert.assertSame("BMW", filteredCars.get(0).getBrand());
+
+    }
+
 }
