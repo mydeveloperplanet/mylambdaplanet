@@ -116,4 +116,12 @@ public class TestLambdas {
         carUtilities.doSomethingWithCars(cars, car -> car.getBrand(), brand -> System.out.println(brand));
     }
 
+    /**
+     * Test lambda with streams
+     */
+    @Test
+    public void testStreams() {
+        cars.stream().map(car -> car.getBrand()).forEach(brand -> System.out.println(brand));
+    }
+
 }
