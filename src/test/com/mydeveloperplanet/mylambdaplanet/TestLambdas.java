@@ -98,4 +98,22 @@ public class TestLambdas {
 
     }
 
+    /**
+     * Test the Consumer interface
+     */
+    @Test
+    public void testConsumerInterface() {
+        CarUtilities carUtilities = new CarUtilities();
+        carUtilities.doSomethingWithCars(cars, car -> car.printCar());
+    }
+
+    /**
+     * Test the Function interface
+     */
+    @Test
+    public void testFunctionInterface() {
+        CarUtilities carUtilities = new CarUtilities();
+        carUtilities.doSomethingWithCars(cars, car -> car.getBrand(), brand -> System.out.println(brand));
+    }
+
 }

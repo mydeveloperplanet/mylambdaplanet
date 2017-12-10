@@ -34,4 +34,8 @@ public class Car {
     public void setBuildYear(int buildYear) {
         this.buildYear = buildYear;
     }
+
+    public void printCar() {
+        System.out.println("Car is " + this.getBrand());
+    }
 }

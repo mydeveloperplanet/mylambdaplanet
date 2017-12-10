@@ -2,6 +2,8 @@ package com.mydeveloperplanet.mylambdaplanet;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
@@ -43,6 +45,34 @@ public class CarUtilities {
         }
 
         return filteredCars;
+    }
+
+    /**
+     * Performs an action on the Cars list
+     * @param cars The list of cars
+     * @param consumer The action to be performed on the Car objects
+     */
+    public void doSomethingWithCars(List<Car> cars, Consumer<Car> consumer) {
+
+        for(Car car : cars) {
+            consumer.accept(car);
+        }
+
+    }
+
+    /**
+     * Retrieves a value from a Car object and performs an action on the value
+     * @param cars The list of cars
+     * @param function The value to be retrieved
+     * @param consumer The action to be performed on the value
+     */
+    public void doSomethingWithCars(List<Car> cars, Function<Car, String> function, Consumer<String> consumer) {
+
+        for(Car car : cars) {
+            String brand = function.apply(car);
+            consumer.accept(brand);
+        }
+
     }
 
 }
