@@ -125,12 +125,33 @@ public class TestLambdas {
         cars.stream().map(car -> car.getBrand()).forEach(brand -> System.out.println(brand));
     }
 
+    /**
+     * Test lambda with streams, is equivalent to the example in test
+     * testImplementValidateCarWithLambdaAndPredicate
+     */
     @Test
     public void testStreamsFilter() {
         List<Car> filteredCars = cars.stream().filter(car -> "BMW".equals(car.getBrand())).collect(Collectors.toList());
 
         Assert.assertEquals(1, filteredCars.size());
         Assert.assertSame("BMW", filteredCars.get(0).getBrand());
+    }
+
+    /**
+     * Rewrite test testStreams with method reference invocation
+     */
+    @Test
+    public void testStreamsWithMethodReference() {
+        cars.stream().map(car -> car.getBrand()).forEach(System.out::println);
+    }
+
+    /**
+     * Test the Consumer interface with method reference invocation
+     */
+    @Test
+    public void testConsumerInterfaceWithMethodReference() {
+        CarUtilities carUtilities = new CarUtilities();
+        carUtilities.doSomethingWithCars(cars, Car::printCar);
     }
 
 }
