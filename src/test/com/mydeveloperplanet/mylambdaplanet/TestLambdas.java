@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TestLambdas {
 
@@ -122,6 +123,14 @@ public class TestLambdas {
     @Test
     public void testStreams() {
         cars.stream().map(car -> car.getBrand()).forEach(brand -> System.out.println(brand));
+    }
+
+    @Test
+    public void testStreamsFilter() {
+        List<Car> filteredCars = cars.stream().filter(car -> "BMW".equals(car.getBrand())).collect(Collectors.toList());
+
+        Assert.assertEquals(1, filteredCars.size());
+        Assert.assertSame("BMW", filteredCars.get(0).getBrand());
     }
 
 }
